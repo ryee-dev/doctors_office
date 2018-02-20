@@ -18,4 +18,13 @@ class Doctor
     end
     doctors
   end
+
+  def save
+    DB.exec("INSERT INTO doctors (id, name, specialty) VALUES ('#{@id}', '#{@name}', '#{@specialty}');")
+  end
+
+  def ==(another_doctor)
+    self.id.==(another_doctor.id).&(self.name.==(another_doctor.name)).&(self.specialty.==(another_doctor.specialty))
+  end
+
 end
