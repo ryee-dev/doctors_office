@@ -27,12 +27,14 @@ class Patient
     self.name.==(another_patient.name).&(self.birthdate.==(another_patient.birthdate)).&(self.doctor_id.==(another_patient.doctor_id))
   end
 
-  def self.find(doctor_id)
-    Patient.all.each do |patient|
-      if patient.doctor_id.==(doctor_id)
-        return patient
-      end
-    end
+  def assign_dr(doctor_id)
+   @doc_id = doctor_id
+   DB.exec("UPDATE patients SET doc_id = '#{doc_id}' WHERE name='#{@name}'")
+  end
+
+  def self.find(id)
+    pat_info = DB.exec("SELECT * FROM patients WHERE id='#{id}';")
+    Patient.new({:name => "#{pat_info['name']}", :birthdate => "#{pat_info['birthdate']}"})
   end
 
 end

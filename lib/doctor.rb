@@ -27,11 +27,17 @@ class Doctor
     self.id.==(another_doctor.id).&(self.name.==(another_doctor.name)).&(self.specialty.==(another_doctor.specialty))
   end
 
-  def self.find(id)
-    Doctor.all.each do |doctor|
-      if doctor.id.==(id)
-        return doctor
-      end
-    end
+  # def get_id
+  #   id = DB.exec("SELECT id FROM doctor WHERE name='#{@name}';")
+  #   [0]['id'].to_i
+  # end
+
+  # def self.find(id)
+  #
+  # end
+
+  def self.get_name(id)
+    DB.exec("SELECT name FROM doctor WHERE id='#{id}';")[0]['name']
   end
+
 end
