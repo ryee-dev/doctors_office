@@ -11,10 +11,10 @@ class Doctor
     returned_doctors = DB.exec("SELECT * FROM doctor;")
     doctors = []
     returned_doctors.each() do |list|
-      id = list.fetch("id").to_i()
+      # id = list.fetch("id").to_i()
       name = list.fetch("name")
       specialty = list.fetch("specialty")
-      doctors.push(Doctor.new({:id => id, :name => name, :specialty => specialty}))
+      doctors.push(Doctor.new({:name => name, :specialty => specialty}))
     end
     doctors
   end

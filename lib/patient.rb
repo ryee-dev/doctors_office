@@ -8,7 +8,7 @@ class Patient
   end
 
   def self.all
-    returned_patients = DB.exec("SELECT * FROM patient")
+    returned_patients = DB.exec("SELECT * FROM patient;")
     patients = []
     returned_patients.each do |item|
       name = item.fetch("name")
@@ -25,6 +25,14 @@ class Patient
 
   def ==(another_patient)
     self.name.==(another_patient.name).&(self.birthdate.==(another_patient.birthdate)).&(self.doctor_id.==(another_patient.doctor_id))
+  end
+
+  def self.find(doctor_id)
+    Patient.all.each do |patient|
+      if patient.doctor_id.==(doctor_id)
+        return patient
+      end
+    end
   end
 
 end
