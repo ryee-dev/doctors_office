@@ -17,6 +17,15 @@ post('/') do
   @doctor_name = params['doctor_name']
   @specialty = params['specialty']
   item = Doctor.new(:name => @doctor_name, :specialty => @specialty)
+  item.save
+  erb(:doctor)
+end
+
+get('/patient') do
+  Patient.all()
+  @patient_name = params['patient_name']
+  @birthdate = params['birthdate']
+  item = Doctor.new(:name => @doctor_name, :specialty => @specialty)
 
   item.save
   erb(:doctor)
