@@ -8,7 +8,7 @@ class Patient
   end
 
   def self.all
-    returned_patients = DB.exec("SELECT * FROM patients ORDER BY id")
+    returned_patients = DB.exec("SELECT * FROM patient")
     patients = []
     returned_patients.each do |item|
       name = item.fetch("name")
@@ -20,7 +20,7 @@ class Patient
   end
 
   def save
-    DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id});")
+    DB.exec("INSERT INTO patient (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id});")
   end
 
   def ==(another_patient)

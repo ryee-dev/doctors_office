@@ -11,7 +11,7 @@ require('spec_helper')
 
   describe("#save") do
     it("saves a patient object to the patient table") do
-      patient1 = Patient.new({:name => "bob", :birthdate => "1990-09-12 00:00:00", :doctor_id => 1})
+      patient1 = Patient.new({:name => "bob", :birthdate => "1990-09-12", :doctor_id => 1})
       patient1.save()
       expect(Patient.all()).to(eq([patient1]))
     end

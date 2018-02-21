@@ -8,7 +8,7 @@ class Doctor
   end
 
   def self.all
-    returned_doctors = DB.exec("SELECT * FROM doctors;")
+    returned_doctors = DB.exec("SELECT * FROM doctor;")
     doctors = []
     returned_doctors.each() do |list|
       id = list.fetch("id").to_i()
@@ -20,7 +20,7 @@ class Doctor
   end
 
   def save
-    DB.exec("INSERT INTO doctors (id, name, specialty) VALUES ('#{@id}', '#{@name}', '#{@specialty}');")
+    DB.exec("INSERT INTO doctor (id, name, specialty) VALUES ('#{@id}', '#{@name}', '#{@specialty}');")
   end
 
   def ==(another_doctor)

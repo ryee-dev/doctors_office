@@ -5,7 +5,7 @@ require './lib/doctor.rb'
 require './lib/patient.rb'
 require 'pg'
 
-DB = PG.connect({:dbname => 'doctor_office'})
+DB = PG.connect({:dbname => 'doctors_office'})
 
 get('/') do
   @doctor_list = Doctor.all()
@@ -13,7 +13,5 @@ get('/') do
 end
 
 post('/') do
-  new_task= Task.new(:description, :due_date)
-  new_task.save()
-  erb(:to_do)
+  erb(:doctor)
 end
