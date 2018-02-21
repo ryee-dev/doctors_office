@@ -13,5 +13,18 @@ get('/') do
 end
 
 post('/') do
+  Doctor.all()
+  @doctor_name = params['doctor_name']
+  @specialty = params['specialty']
+  item = Doctor.new(:name => @doctor_name, :specialty => @specialty)
+
+  item.save
   erb(:doctor)
+end
+
+get('/doctor/:id') do
+  Doctor.all()
+  @doc_id = Doctor.find(params[:id])
+
+  erb(:output)
 end

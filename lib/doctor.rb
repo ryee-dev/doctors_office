@@ -1,8 +1,8 @@
 class Doctor
-  attr_reader(:id, :name, :specialty)
+  attr_accessor(:name, :specialty)
+  attr_reader(:id)
 
   def initialize(attributes)
-    @id = attributes.fetch(:id)
     @name = attributes.fetch(:name)
     @specialty = attributes.fetch(:specialty)
   end
@@ -20,11 +20,18 @@ class Doctor
   end
 
   def save
-    DB.exec("INSERT INTO doctor (id, name, specialty) VALUES ('#{@id}', '#{@name}', '#{@specialty}');")
+    DB.exec("INSERT INTO doctor (name, specialty) VALUES ('#{@name}', '#{@specialty}');")
   end
 
   def ==(another_doctor)
     self.id.==(another_doctor.id).&(self.name.==(another_doctor.name)).&(self.specialty.==(another_doctor.specialty))
   end
 
+  def self.find(id)
+    Doctor.all.each do |doctor|
+      if doctor.id.==(id)
+        return doctor
+      end
+    end
+  end
 end
