@@ -1,7 +1,7 @@
 
 <h2><u>Add Patient</u></h2>
 
-<form action="/" method="post">
+<form action="/patient" method="post">
   <div class="form-group">
     <label for="patient_name">Enter Patient's name: </label>
     <input type="text" name="patient_name" class="form-control">
@@ -17,6 +17,8 @@
   <button type="submit" class="btn btn-info">Add</button>
 </form>
 
-<br><br>
+<br>
+<a href="/">Back</a>
+<br>
 
 <%= @patient_name %>

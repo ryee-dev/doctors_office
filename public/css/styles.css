@@ -21,3 +21,7 @@ button {
 #welcome {
   margin-top: 75px;
 }
+
+#small-button {
+  width: 10%;
+}
